@@ -1,31 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'providers/card_provider.dart';
-import 'providers/category_provider.dart';
-import 'screens/home_screen.dart';
+import 'package:poke_radar_app/app.dart';
+import 'package:poke_radar_app/routes.dart';
 
 void main() {
-  runApp(MyApp());
-}
+  // Initialize dependencies
+  AppRoutes.initDependencies();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (ctx) => CategoryProvider()),
-        ChangeNotifierProvider(create: (ctx) => CardProvider()),
-      ],
-      child: MaterialApp(
-        title: 'PokeTrend Radar',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: HomeScreen(),
-      ),
-    );
-  }
+  runApp(const PokeTrendRadarApp());
 }
