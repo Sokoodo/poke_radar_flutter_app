@@ -6,7 +6,7 @@ class PokemonCardWidget extends StatelessWidget {
   final PokemonCard card;
   final VoidCallback onTap;
 
-  const PokemonCardWidget({
+  const PokemonCardWidget({super.key, 
     required this.card,
     required this.onTap,
   });

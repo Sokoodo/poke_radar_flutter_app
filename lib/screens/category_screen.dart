@@ -5,6 +5,8 @@ import '../providers/category_provider.dart';
 import '../widgets/card_grid.dart';
 
 class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({super.key});
+
   @override
   _CategoryScreenState createState() => _CategoryScreenState();
 }

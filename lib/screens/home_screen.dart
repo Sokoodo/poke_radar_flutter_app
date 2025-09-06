@@ -4,6 +4,8 @@ import '../providers/category_provider.dart';
 import 'category_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

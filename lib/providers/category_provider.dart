@@ -5,7 +5,7 @@ class CategoryProvider with ChangeNotifier {
   static const List<String> categories = ['Sealed', 'Singles', 'Owned'];
 
   // Stato delle categorie selezionate (inizialmente tutte deselezionate)
-  List<bool> _selectedCategories = [false, false, false];
+  final List<bool> _selectedCategories = [false, false, false];
 
   // Categoria attualmente attiva
   String _activeCategory = '';

@@ -7,7 +7,7 @@ import 'pokemon_card.dart';
 class CardGrid extends StatelessWidget {
   final List<PokemonCard> cards;
 
-  const CardGrid({required this.cards});
+  const CardGrid({super.key, required this.cards});
 
   @override
   Widget build(BuildContext context) {
