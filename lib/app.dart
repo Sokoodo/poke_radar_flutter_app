@@ -29,11 +29,7 @@ class PokeTrendRadarApp extends StatelessWidget {
       getPages: AppRoutes.routes,
       unknownRoute: GetPage(
         name: '/notfound',
-        page: () => const Scaffold(
-          body: Center(
-            child: Text('Page not found'),
-          ),
-        ),
+        page: () => const Scaffold(body: Center(child: Text('Page not found'))),
       ),
     );
   }

@@ -1,7 +1,7 @@
 name: poke_radar_app
 description: Web App Application for cards price trend - Flutter version
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
