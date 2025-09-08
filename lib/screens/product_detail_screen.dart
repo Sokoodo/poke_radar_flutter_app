@@ -217,7 +217,7 @@ class _ProductDetailScreenState extends BaseScreenState<ProductDetailScreen> {
                                 Container(
                                   padding: const EdgeInsets.all(12),
                                   decoration: BoxDecoration(
-                                    color: Colors.green.withOpacity(0.1),
+                                    color: Colors.green,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Column(
@@ -262,7 +262,7 @@ class _ProductDetailScreenState extends BaseScreenState<ProductDetailScreen> {
                       ],
                     ),
                   ),
-                  ResponsiveRowColumnItem(child: const SizedBox(width: 16)),
+                  const ResponsiveRowColumnItem(child: const SizedBox(width: 16)),
                   // Colonna destra - Grafico
                   ResponsiveRowColumnItem(
                     rowFlex: 1,

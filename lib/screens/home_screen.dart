@@ -19,98 +19,127 @@ class _HomeScreenState extends BaseScreenState<HomeScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: ResponsiveBreakpoints.builder(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.catching_pokemon, size: 100, color: Colors.blue),
-              const SizedBox(height: 30),
-              const Text(
-                'PokeTrendRadar',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+        // FIX overflow: scroll + centratura
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.catching_pokemon,
+                        size: 100,
+                        color: Colors.blue,
+                      ),
+                      const SizedBox(height: 28), // leggermente ridotto
+                      const Text(
+                        'PokeTrendRadar',
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 18),
+                      const Text(
+                        'Monitora i prezzi delle carte Pokemon',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 36), // leggermente ridotto
+                      // Prima riga
+                      ResponsiveRowColumn(
+                        layout:
+                            ResponsiveBreakpoints.of(
+                              context,
+                            ).smallerThan(TABLET)
+                            ? ResponsiveRowColumnType.COLUMN
+                            : ResponsiveRowColumnType.ROW,
+                        rowMainAxisAlignment: MainAxisAlignment.center,
+                        columnMainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ResponsiveRowColumnItem(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: _buildNavigationCard(
+                                title: 'Carte Singole',
+                                subtitle: 'Esplora le carte Pokemon singole',
+                                icon: Icons.style,
+                                onTap: () =>
+                                    NavigationService.to.navigateToSingles(),
+                                color: Colors.green,
+                              ),
+                            ),
+                          ),
+                          ResponsiveRowColumnItem(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: _buildNavigationCard(
+                                title: 'Prodotti Sealed',
+                                subtitle: 'Buste e box sigillati',
+                                icon: Icons.inventory_2,
+                                onTap: () =>
+                                    NavigationService.to.navigateToSealed(),
+                                color: Colors.orange,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // Seconda riga
+                      ResponsiveRowColumn(
+                        layout:
+                            ResponsiveBreakpoints.of(
+                              context,
+                            ).smallerThan(TABLET)
+                            ? ResponsiveRowColumnType.COLUMN
+                            : ResponsiveRowColumnType.ROW,
+                        rowMainAxisAlignment: MainAxisAlignment.center,
+                        columnMainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ResponsiveRowColumnItem(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: _buildNavigationCard(
+                                title: 'Le Mie Carte',
+                                subtitle: 'Gestisci la tua collezione',
+                                icon: Icons.collections,
+                                onTap: () =>
+                                    NavigationService.to.navigateToMyCards(),
+                                color: Colors.purple,
+                              ),
+                            ),
+                          ),
+                          ResponsiveRowColumnItem(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: _buildNavigationCard(
+                                title: 'Statistiche',
+                                subtitle: 'Analizza i dati di mercato',
+                                icon: Icons.analytics,
+                                onTap: () =>
+                                    NavigationService.to.navigateToStatistics(),
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
-              const Text(
-                'Monitora i prezzi delle carte Pokemon',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 50),
-              ResponsiveRowColumn(
-                layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
-                    ? ResponsiveRowColumnType.COLUMN
-                    : ResponsiveRowColumnType.ROW,
-                rowMainAxisAlignment: MainAxisAlignment.center,
-                columnMainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ResponsiveRowColumnItem(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: _buildNavigationCard(
-                        title: 'Carte Singole',
-                        subtitle: 'Esplora le carte Pokemon singole',
-                        icon: Icons.style,
-                        onTap: () => NavigationService.to.navigateToSingles(),
-                        color: Colors.green,
-                      ),
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: _buildNavigationCard(
-                        title: 'Prodotti Sealed',
-                        subtitle: 'Buste e box sigillati',
-                        icon: Icons.inventory_2,
-                        onTap: () => NavigationService.to.navigateToSealed(),
-                        color: Colors.orange,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              ResponsiveRowColumn(
-                layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
-                    ? ResponsiveRowColumnType.COLUMN
-                    : ResponsiveRowColumnType.ROW,
-                rowMainAxisAlignment: MainAxisAlignment.center,
-                columnMainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ResponsiveRowColumnItem(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: _buildNavigationCard(
-                        title: 'Le Mie Carte',
-                        subtitle: 'Gestisci la tua collezione',
-                        icon: Icons.collections,
-                        onTap: () => NavigationService.to.navigateToMyCards(),
-                        color: Colors.purple,
-                      ),
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: _buildNavigationCard(
-                        title: 'Statistiche',
-                        subtitle: 'Analizza i dati di mercato',
-                        icon: Icons.analytics,
-                        onTap: () =>
-                            NavigationService.to.navigateToStatistics(),
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+            );
+          },
         ),
         breakpoints: const [
           Breakpoint(start: 0, end: 450, name: MOBILE),
@@ -150,12 +179,16 @@ class _HomeScreenState extends BaseScreenState<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 4),
               Text(
                 subtitle,
-                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                style: TextStyle(fontSize: 12, color: Colors.grey),
                 textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

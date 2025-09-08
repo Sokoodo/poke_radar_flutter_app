@@ -12,6 +12,8 @@ class PokeTrendRadarApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'PokeTrendRadar',
       debugShowCheckedModeBanner: false,
+      initialRoute: AppConstants.homeRoute,
+      getPages: AppRoutes.routes,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
@@ -25,10 +27,8 @@ class PokeTrendRadarApp extends StatelessWidget {
           Breakpoint(start: 1921, end: double.infinity, name: '4K'),
         ],
       ),
-      initialRoute: AppConstants.homeRoute,
-      getPages: AppRoutes.routes,
       unknownRoute: GetPage(
-        name: '/notfound',
+        name: '/not-found',
         page: () => const Scaffold(body: Center(child: Text('Page not found'))),
       ),
     );

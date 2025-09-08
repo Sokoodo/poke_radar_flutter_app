@@ -67,7 +67,7 @@ class ProductCard extends StatelessWidget {
                         icon: const Icon(Icons.open_in_new),
                         iconSize: 20,
                         style: IconButton.styleFrom(
-                          backgroundColor: Colors.white.withOpacity(0.8),
+                          backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(4),
                         ),
                       ),
@@ -135,7 +135,7 @@ class ProductCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.blue.withOpacity(0.1),
+                            color: Colors.blue,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
