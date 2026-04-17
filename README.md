@@ -112,24 +112,6 @@ flutter build windows --release
 flutter build web --release
 ```
 
-## Differenze dall'Originale Angular
-
-### Migliorate
-
-- **Performance**: Flutter offre performance native superiori
-- **Responsive**: Migliore supporto per diversi form factor
-- **State Management**: GetX semplifica la gestione dello stato
-- **Navigation**: Sistema di routing più intuitivo
-
-### Equivalenze
-
-- **Servizi Angular** → **Services Flutter con GetX**
-- **Componenti Angular** → **StatefulWidget/StatelessWidget**
-- **HttpClient Angular** → **HTTP package + ApiClient**
-- **Angular Material** → **Material 3**
-- **ECharts** → **FL Chart**
-- **Bootstrap** → **Responsive Framework**
-
 ## Struttura Responsive
 
 L'app si adatta automaticamente a diversi schermi:
@@ -137,23 +119,6 @@ L'app si adatta automaticamente a diversi schermi:
 - **Mobile**: < 800px (layout a colonna)
 - **Tablet**: 800-1000px (layout ibrido)
 - **Desktop**: > 1000px (layout multi-colonna)
-
-## Performance
-
-- **Lazy Loading**: Caricamento on-demand delle schermate
-- **Image Caching**: Cache persistente delle immagini
-- **State Persistence**: Mantenimento stato durante la navigazione
-- **API Caching**: Cache intelligente delle chiamate API
-
-## Contribuire
-
-Per contribuire al progetto:
-
-1. Fork del repository
-2. Crea un branch per la feature (`git checkout -b feature/AmazingFeature`)
-3. Commit delle modifiche (`git commit -m 'Add AmazingFeature'`)
-4. Push del branch (`git push origin feature/AmazingFeature`)
-5. Apri una Pull Request
 
 ## Licenza
 
