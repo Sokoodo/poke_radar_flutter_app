@@ -1,6 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:poke_radar_app/screens/base_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../services/product_service.dart';
@@ -70,6 +71,13 @@ class _ProductDetailScreenState extends BaseScreenState<ProductDetailScreen> {
     if (idUrl != null) {
       controller.initialize(idUrl);
     }
+  }
+
+  String cleanBase64(String raw) {
+    if (raw.contains(',')) {
+      return raw.split(',').last; // rimuove "data:image/png;base64,"
+    }
+    return raw;
   }
 
   @override
@@ -157,12 +165,10 @@ class _ProductDetailScreenState extends BaseScreenState<ProductDetailScreen> {
                                 constraints: const BoxConstraints(
                                   maxHeight: 400,
                                 ),
-                                child: CachedNetworkImage(
-                                  imageUrl: product.image,
+                                child: Image.memory(
+                                  base64Decode(cleanBase64(product.image)),
                                   fit: BoxFit.contain,
-                                  placeholder: (context, url) =>
-                                      const CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
+                                  errorBuilder: (context, error, stackTrace) =>
                                       Container(
                                         height: 300,
                                         color: Colors.grey[200],
@@ -262,7 +268,9 @@ class _ProductDetailScreenState extends BaseScreenState<ProductDetailScreen> {
                       ],
                     ),
                   ),
-                  const ResponsiveRowColumnItem(child: const SizedBox(width: 16)),
+                  const ResponsiveRowColumnItem(
+                    child: const SizedBox(width: 16),
+                  ),
                   // Colonna destra - Grafico
                   ResponsiveRowColumnItem(
                     rowFlex: 1,

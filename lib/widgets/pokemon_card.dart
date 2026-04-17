@@ -1,5 +1,6 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductCard extends StatelessWidget {
   final String idUrl;
@@ -24,6 +25,13 @@ class ProductCard extends StatelessWidget {
     this.onTap,
     this.onCardMarketTap,
   });
+  
+  String cleanBase64(String raw) {
+    if (raw.contains(',')) {
+      return raw.split(',').last; // rimuove "data:image/png;base64,"
+    }
+    return raw;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +50,10 @@ class ProductCard extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(8.0),
-                    child: CachedNetworkImage(
-                      imageUrl: image,
+                    child: Image.memory(
+                      base64Decode(cleanBase64(image)),
                       fit: BoxFit.contain,
-                      placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()),
-                      errorWidget: (context, url, error) => Container(
+                      errorBuilder: (context, error, stackTrace) => Container(
                         color: Colors.grey[200],
                         child: const Icon(
                           Icons.image_not_supported,
@@ -57,7 +63,6 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Bottone CardMarket
                   if (onCardMarketTap != null)
                     Positioned(
                       top: 4,

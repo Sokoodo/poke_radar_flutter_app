@@ -1,5 +1,6 @@
 class AppConstants {
-  static const String apiBaseUrl = 'http://localhost:8000';
+  // static const String apiBaseUrl = 'http://localhost:8000';
+  static const String apiBaseUrl = 'http://192.168.1.9:8000'; // per runnare non in locale, ma su rete locale (es. da emulator Android Studio)
 
   // API Endpoints
   static const String singlesPokemonEndpoint = '/api/products/singlesPokemon';
